@@ -1,0 +1,86 @@
+<head>        
+    <style>
+        /* Define the blinking animation */
+        @keyframes blink {
+            0%, 100% { opacity: 1; }   /* Visible */
+            50% { opacity: 0; }  /* Invisible */
+        }
+
+        /* Apply the blinking animation to the button */
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            animation: blink 1.5s infinite; /* 2/3 seconds for one cycle (0.33 sec visible + 0.33 sec invisible) */
+        }
+    </style>
+</head>
+
+<body>
+
+<section id="myVideo">
+    <img src="Hintergrund_fitnessfirst.jpg" alt="Bild_FitnessFirst" width=" 500px">
+    <p style="font-size: 50px; margin-top: -500px; padding-left: 500px" >Test text </p>
+
+    <p id="current-date"></p>
+    <script>
+        // Get the current date
+        const today = new Date();
+
+        // Extract the year and get the last two digits
+        const year = today.getFullYear().toString().slice(-2);  // This gives the last 2 digits of the year (e.g., "24")
+
+        // Get the month and day
+        const month = today.getMonth() + 1; // Months are 0-indexed (0 = January, 1 = February, etc.)
+        const day = today.getDate();
+
+        // Format the date as "DD/MM/YY"
+        const formattedDate = `${day < 10 ? '0' + day : day}.${month < 10 ? '0' + month : month}.${year}`;
+
+        // Display the current date in the HTML element with id "current-date"
+        document.getElementById('current-date').textContent = formattedDate;
+    </script>
+
+    <p id="current-time"></p>
+    <script>
+        function updateTime() {
+            const now = new Date();
+
+            // Get the hours and minutes
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+
+            // Add leading zeros if necessary (e.g., 08:05 instead of 8:5)
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+
+            // Format the time as "HH:mm"
+            const timeString = `${hours}:${minutes}`;
+
+            // Display the current time in the HTML element with id "current-time"
+            document.getElementById('current-time').textContent = timeString;
+        }
+
+        // Update the time immediately when the page loads
+        updateTime();
+
+        // Update the time every minute (60,000 milliseconds)
+        setInterval(updateTime, 60000);
+    </script>
+
+<button style="background-color: #4CAF50; color: darkgreen">CHECKIN-IN</button>
+
+
+</section>
+
+</body>
+
+<script>
+    var video = document.getElementById("myVideo");
+video.addEventListener("click", function() {
+  video.requestFullscreen();
+});        
+</script>
