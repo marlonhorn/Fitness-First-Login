@@ -9,7 +9,7 @@
         }
 
         /* Apply the blinking animation to the button */
-        button {
+        .blink {
             padding: 10px 20px;
             font-size: 16px;
             background-color: blue;
@@ -25,7 +25,7 @@
 
 <section id="myVideo" style="width: 1179px; height: 2556px; background-image: url(Marlon_Fitness.png)">
 
-    <button style="background-color: #4CAF50; color: darkgreen; margin-top: 670px; margin-left: 667px;">CHECKIN-IN</button>
+    <button id="blink" style="background-color: #4CAF50; color: darkgreen; margin-top: 670px; margin-left: 667px;">CHECKIN-IN</button>
     
     <p id="current-date"></p>
     <script>
@@ -85,7 +85,10 @@ video.addEventListener("click", function() {
 });        
 </script>
 
-<script>function openFullscreen() {
+
+<button onclick="openFullScreen()">fullscreen</button>
+<script>
+function openFullscreen() {
     if (document.documentElement.requestFullscreen) {
         document.documentElement.requestFullscreen();
     } else if (document.documentElement.webkitRequestFullscreen) { // Safari
