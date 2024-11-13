@@ -1,84 +1,76 @@
-<head>        
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vollbild-Section</title>
     <style>
-        /* Define the blinking animation */
-        @keyframes blink {
-            0%, 100% { opacity: 1; }   /* Visible */
-            50% { opacity: 0; }  /* Invisible */
+        /* Basis-Style für die Section */
+        .section {
+            width: 100%;
+            height: 200px;
+            background-color: lightblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
         }
 
-        /* Apply the blinking animation to the button */
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: blue;
+        /* Vollbildmodus-Style */
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
             color: white;
-            border: none;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        /* Zeigt die Vollbild-Section an */
+        .fullscreen.active {
+            display: flex;
+        }
+
+        /* Schließen-Knopf */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: red;
+            color: white;
+            padding: 10px;
             cursor: pointer;
-            animation: blink 1.5s infinite; /* 2/3 seconds for one cycle (0.33 sec visible + 0.33 sec invisible) */
+            border: none;
         }
     </style>
 </head>
-
 <body>
 
-<section id="myVideo" style="width: 1179px; height: 2556px; background-image: url(Marlon_Fitness.png)">
+    <!-- Normale Section, die anklickbar ist -->
+    <div class="section" onclick="openFullscreen()">
+        Klicke, um im Vollbildmodus zu öffnen
+    </div>
 
-    <button style="background-color: #4CAF50; color: darkgreen; margin-top: 670px; margin-left: 667px;">CHECKIN-IN</button>
-    
-    <p id="current-date"></p>
+    <!-- Vollbild-Container -->
+    <div class="fullscreen" id="fullscreenSection">
+        <button class="close-btn" onclick="closeFullscreen()">Schließen</button>
+        <p>Inhalt im Vollbildmodus</p>
+    </div>
+
     <script>
-        // Get the current date
-        const today = new Date();
-
-        // Extract the year and get the last two digits
-        const year = today.getFullYear().toString().slice(-2);  // This gives the last 2 digits of the year (e.g., "24")
-
-        // Get the month and day
-        const month = today.getMonth() + 1; // Months are 0-indexed (0 = January, 1 = February, etc.)
-        const day = today.getDate();
-
-        // Format the date as "DD/MM/YY"
-        const formattedDate = `${day < 10 ? '0' + day : day}.${month < 10 ? '0' + month : month}.${year}`;
-
-        // Display the current date in the HTML element with id "current-date"
-        document.getElementById('current-date').textContent = formattedDate;
-    </script>
-
-    <p id="current-time" style="margin-top: 850px; margin-left: 667px;"></p>
-    <script>
-        function updateTime() {
-            const now = new Date();
-
-            // Get the hours and minutes
-            let hours = now.getHours();
-            let minutes = now.getMinutes();
-
-            // Add leading zeros if necessary (e.g., 08:05 instead of 8:5)
-            hours = hours < 10 ? '0' + hours : hours;
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-
-            // Format the time as "HH:mm"
-            const timeString = `${hours}:${minutes}`;
-
-            // Display the current time in the HTML element with id "current-time"
-            document.getElementById('current-time').textContent = timeString;
+        // Öffnen der Section im Vollbildmodus
+        function openFullscreen() {
+            document.getElementById('fullscreenSection').classList.add('active');
         }
 
-        // Update the time immediately when the page loads
-        updateTime();
-
-        // Update the time every minute (60,000 milliseconds)
-        setInterval(updateTime, 60000);
+        // Schließen des Vollbildmodus
+        function closeFullscreen() {
+            document.getElementById('fullscreenSection').classList.remove('active');
+        }
     </script>
-
-
-</section>
-
 </body>
-
-<script>
-    var video = document.getElementById("myVideo");
-video.addEventListener("click", function() {
-  video.requestFullscreen();
-});        
-</script>
+</html>
