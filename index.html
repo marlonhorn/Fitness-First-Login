@@ -18,16 +18,34 @@
             cursor: pointer;
             animation: blink 1.5s infinite; /* 2/3 seconds for one cycle (0.33 sec visible + 0.33 sec invisible) */
         }
+
+        p {
+            font-size: 40px;
+            color: #cdf5ff; 
+            font-family: "neue-haas-grotesk-text", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+
+        }
     </style>
+    <link rel="stylesheet" href="https://use.typekit.net/bek1kfe.css">
 </head>
 
-<body>
 
-<section id="myVideo" style="width: 1179px; height: 2556px; background-image: url(Marlon_Fitness2.png)">
+<body>
+<section id="myVideo" style="display: flex; width: 1179px; height: 2556px; background-image: url(Marlon_Fitness2.png)">
+    <div >
+        <p>Simon Kubsa</p>
+    </div>
+    
+    <div>
+        <button id="blink" style="background-color: #4CAF50; color: darkgreen; margin-top: 670px; margin-left: 667px;">CHECKIN-IN</button>
+    </div>
+
 
     <button id="blink" style="background-color: #4CAF50; color: darkgreen; margin-top: 670px; margin-left: 667px;">CHECKIN-IN</button>
     
-    <p id="current-date"></p>
+    <p id="current-date" ></p>
     <script>
         // Get the current date
         const today = new Date();
