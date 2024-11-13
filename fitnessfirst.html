@@ -21,10 +21,10 @@
 
 <body>
 
-<section id="myVideo">
-    <img src="Hintergrund_fitnessfirst.jpg" alt="Bild_FitnessFirst" width=" 500px">
-    <p style="font-size: 50px; margin-top: -500px; padding-left: 500px" >Test text </p>
+<section id="myVideo" style="width: 1179px; height: 2556px; background-image: url(Marlon_Fitness.png)">
 
+    <button style="background-color: #4CAF50; color: darkgreen; margin-top: 670px; margin-left: 667px;">CHECKIN-IN</button>
+    
     <p id="current-date"></p>
     <script>
         // Get the current date
@@ -44,7 +44,7 @@
         document.getElementById('current-date').textContent = formattedDate;
     </script>
 
-    <p id="current-time"></p>
+    <p id="current-time" style="margin-top: 850px; margin-left: 667px;"></p>
     <script>
         function updateTime() {
             const now = new Date();
@@ -70,8 +70,6 @@
         // Update the time every minute (60,000 milliseconds)
         setInterval(updateTime, 60000);
     </script>
-
-<button style="background-color: #4CAF50; color: darkgreen">CHECKIN-IN</button>
 
 
 </section>
